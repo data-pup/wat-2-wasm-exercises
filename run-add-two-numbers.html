@@ -9,10 +9,18 @@
 
   <body>
     <script>
-    WebAssembly.instantiateStreaming(fetch('add-two-numbers.wasm'))
-    .then(obj => {
-       console.log(obj.instance.exports.add(1, 2));  // "3"
-    });
+      importObject = {};
+      request = new XMLHttpRequest();
+      request.open('GET', 'add-two-numbers.wasm');
+      request.responseType = 'arraybuffer';
+      request.send();
+
+      request.onload = function() {
+        var bytes = request.response;
+        WebAssembly.instantiate(bytes, importObject).then(results => {
+          console.log(results.instance.exports.add(1, 2));
+        });
+      };
     </script>
   </body>
 
