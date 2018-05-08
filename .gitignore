@@ -1,4 +1,7 @@
 # Ignore WABT tools' symbolic links.
-wat2wasm
 wasm2wat
+wasm-interp
+wasm-objdump
+wasm-validate
+wat2wasm
 
