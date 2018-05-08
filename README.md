@@ -5,4 +5,4 @@ binaries.
 ### References
 
 [Understanding WebAssembly text format](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format)
-
+[Web Assembly Examples](https://github.com/mdn/webassembly-examples)
