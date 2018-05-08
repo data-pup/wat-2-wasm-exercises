@@ -1,0 +1,4 @@
+# Ignore WABT tools' symbolic links.
+wat2wasm
+wasm2wat
+
