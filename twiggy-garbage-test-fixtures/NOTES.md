@@ -109,25 +109,37 @@ Here is the JSON representation of the same information.
 Using the `objdump` and `twiggy` information, I can craft the expected output.
 
 ```
- Bytes │ Size % │ Item
-───────┼────────┼─────────────
-    11 ┊ 13.10% ┊ code[2]
-     8 ┊  9.52% ┊ code[1]
-     5 ┊  5.95% ┊ code[0]
+ Shallow Bytes │ Shallow % │ Item
+───────────────┼───────────┼────────
+            11 ┊    13.10% ┊ code[2]
+             8 ┊     9.52% ┊ code[1]
+             7 ┊     8.33% ┊ type[2]
+             5 ┊     5.95% ┊ type[1]
+             5 ┊     5.95% ┊ code[0]
+             4 ┊     4.76% ┊ type[0]
+             1 ┊     1.19% ┊ func[0]
+             1 ┊     1.19% ┊ func[1]
+             1 ┊     1.19% ┊ func[2]
 ```
 
 Here is the JSON representation of the same information. (Human readable)
 
 ```
 [
-    {"name":"code[2]","shallow_size":11,"shallow_size_percent":13.095238095238097},
-    {"name":"code[1]","shallow_size":8,"shallow_size_percent":9.523809523809524},
-    {"name":"code[0]","shallow_size":5,"shallow_size_percent":5.952380952380952}
+    {"name":"code[2]","bytes":11,"size_percent":13.095238095238097},
+    {"name":"code[1]","bytes":8,"size_percent":9.523809523809524},
+    {"name":"type[2]","bytes":7,"size_percent":8.333333333333332},
+    {"name":"type[1]","bytes":5,"size_percent":5.952380952380952},
+    {"name":"code[0]","bytes":5,"size_percent":5.952380952380952},
+    {"name":"type[0]","bytes":4,"size_percent":4.761904761904762},
+    {"name":"func[0]","bytes":1,"size_percent":1.1904761904761905},
+    {"name":"func[1]","bytes":1,"size_percent":1.1904761904761905},
+    {"name":"func[2]","bytes":1,"size_percent":1.1904761904761905},
 ]
 ```
 
 Minified, as the tool will print it out.
 
 ```
-[{"name":"code[2]","shallow_size":11,"shallow_size_percent":13.095238095238097},{"name":"code[1]","shallow_size":8,"shallow_size_percent":9.523809523809524},{"name":"code[0]","shallow_size":5,"shallow_size_percent":5.952380952380952}]
+[{"name":"code[2]","bytes":11,"size_percent":13.095238095238097},{"name":"code[1]","bytes":8,"size_percent":9.523809523809524},{"name":"type[2]","bytes":7,"size_percent":8.333333333333332},{"name":"type[1]","bytes":5,"size_percent":5.952380952380952},{"name":"code[0]","bytes":5,"size_percent":5.952380952380952},{"name":"type[0]","bytes":4,"size_percent":4.761904761904762},{"name":"func[0]","bytes":1,"size_percent":1.1904761904761905},{"name":"func[1]","bytes":1,"size_percent":1.1904761904761905},{"name":"func[2]","bytes":1,"size_percent":1.1904761904761905}]
 ```
