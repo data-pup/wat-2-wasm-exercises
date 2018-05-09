@@ -84,26 +84,6 @@ the code section. So, only `code[0]`, `code[1]`, and `code[2]` should appear.
              1 ┊     1.19% ┊ func[3]
 ```
 
-Here is the information regarding the retained size of these objects.
-
-```
- Retained Bytes │ Retained % │ Item
-────────────────┼────────────┼─────────────
-             21 ┊     25.00% ┊ export "add"
-             15 ┊     17.86% ┊ func[3]
-             11 ┊     13.10% ┊ code[2]
-              8 ┊      9.52% ┊ code[1]
-              8 ┊      9.52% ┊ code[3]
-              7 ┊      8.33% ┊ type[2]
-              6 ┊      7.14% ┊ type[3]
-              5 ┊      5.95% ┊ type[1]
-              5 ┊      5.95% ┊ code[0]
-              4 ┊      4.76% ┊ type[0]
-              1 ┊      1.19% ┊ func[0]
-              1 ┊      1.19% ┊ func[1]
-              1 ┊      1.19% ┊ func[2]
-```
-
 Here is the JSON representation of the same information.
 
 ```
@@ -124,3 +104,30 @@ Here is the JSON representation of the same information.
 ]
 ```
 
+### Expected Garbage Output
+
+Using the `objdump` and `twiggy` information, I can craft the expected output.
+
+```
+ Bytes │ Size % │ Item
+───────┼────────┼─────────────
+    11 ┊ 13.10% ┊ code[2]
+     8 ┊  9.52% ┊ code[1]
+     5 ┊  5.95% ┊ code[0]
+```
+
+Here is the JSON representation of the same information. (Human readable)
+
+```
+[
+    {"name":"code[2]","shallow_size":11,"shallow_size_percent":13.095238095238097},
+    {"name":"code[1]","shallow_size":8,"shallow_size_percent":9.523809523809524},
+    {"name":"code[0]","shallow_size":5,"shallow_size_percent":5.952380952380952}
+]
+```
+
+Minified, as the tool will print it out.
+
+```
+[{"name":"code[2]","shallow_size":11,"shallow_size_percent":13.095238095238097},{"name":"code[1]","shallow_size":8,"shallow_size_percent":9.523809523809524},{"name":"code[0]","shallow_size":5,"shallow_size_percent":5.952380952380952}]
+```
