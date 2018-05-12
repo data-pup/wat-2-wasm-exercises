@@ -1,9 +1,15 @@
 (module
+    ;; -------------------------------------------------------------------------
     ;; This is a WebAssembly text file that can be compiled in a wasm module to
     ;; test the `twiggy garbage` command. This file contains exported functions,
-    ;; as well as unreachable functions of different sizes. Some of the
-    ;; unreachable functions reference others, to test that retained size is
-    ;; identified properly.
+    ;; as well as unreachable functions of different sizes.
+    ;; -------------------------------------------------------------------------
+    ;; NOTE: The test cases expect that this module is compiled with debug
+    ;; names written to the binary file, which affects the size percentages.
+    ;; Compile this file using the following command:
+    ;;
+    ;; wat2wasm --debug-names garbage.wat -o garbage.wasm
+    ;; -------------------------------------------------------------------------
 
     ;; This unused function is called by 'unusedAddOne'. Push 1 onto the stack.
     (func $unusedChild (result i32)
