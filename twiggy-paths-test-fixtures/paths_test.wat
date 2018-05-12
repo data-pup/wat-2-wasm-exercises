@@ -4,7 +4,7 @@
     ;; test the `twiggy paths` command. This intends to provide a non-trivial
     ;; structure of call paths for testing purposes.
     ;;
-    ;;                [awoo]            [growl]
+    ;;     [howl]     [awoo]            [growl]
     ;;                  |                 |||
     ;;                  v                 |||
     ;;     [woof]     [bark]              |||
@@ -45,8 +45,12 @@
         i32.add
         i32.add)
 
-    (export "bark" (func $add))
-    (export "woof" (func $add))
-    (export "awoo" (func $add))
-    (export "growl" (func $add))
+    (func $howl (result i32)
+        i32.const 0)
+
+    (export "bark" (func $bark))
+    (export "woof" (func $woof))
+    (export "awoo" (func $awoo))
+    (export "growl" (func $growl))
+    (export "howl" (func $howl))
 )
