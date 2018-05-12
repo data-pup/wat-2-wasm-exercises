@@ -4,6 +4,9 @@
     ;; test the `twiggy paths` command. This intends to provide a non-trivial
     ;; structure of call paths for testing purposes.
     ;;
+    ;; The call path is shown in the ascii diagram below with exported
+    ;; functions enclosed in braces, and unexported functions in quotes.
+    ;;
     ;;     [howl]     [awoo]            [growl]
     ;;                  |                 |||
     ;;                  v                 |||
@@ -55,9 +58,9 @@
     (func $howl (result i32)
         i32.const 0)
 
-    (export "bark" (func $bark))
-    (export "woof" (func $woof))
     (export "awoo" (func $awoo))
+    (export "bark" (func $bark))
     (export "growl" (func $growl))
     (export "howl" (func $howl))
+    (export "woof" (func $woof))
 )
