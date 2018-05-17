@@ -7,15 +7,15 @@
     ;; The call path is shown in the ascii diagram below with exported
     ;; functions enclosed in braces, and unexported functions in quotes.
     ;;
-    ;;     [howl]     [awoo]            [growl]
-    ;;                  |                 |||
-    ;;                  v                 |||
-    ;;     [woof]     [bark]              |||
-    ;;       |         | |                |||
-    ;;       |  -------- |                |||
-    ;;       |  |        |                |||
-    ;;       v  v        v                vvv
-    ;; 'calledOnce' 'calledTwice' 'calledThriceByOneParent'
+    ;;                [awoo]
+    ;;                  |
+    ;;                  v
+    ;;     [woof]     [bark]
+    ;;       |         | |
+    ;;       |  -------- |
+    ;;       |  |        |
+    ;;       v  v        v
+    ;; 'calledOnce' 'calledTwice'
     ;; ------------------------------------------------------------------------
     ;; NOTE: The test cases expect that this module is compiled with debug
     ;; names written to the binary file, which affects the size percentages.
@@ -33,10 +33,6 @@
     (func $calledTwice (result i32)
         i32.const 2)
 
-    ;; This function is called three times by a single function, 'growl'.
-    (func $calledThriceByOneParent (result i32)
-        i32.const 3)
-
     (func $bark (result i32)
         call $calledTwice)
 
@@ -48,19 +44,7 @@
     (func $awoo (result i32)
         call $bark)
 
-    (func $growl (result i32)
-        call $calledThriceByOneParent
-        call $calledThriceByOneParent
-        call $calledThriceByOneParent
-        i32.add
-        i32.add)
-
-    (func $howl (result i32)
-        i32.const 0)
-
     (export "awoo" (func $awoo))
     (export "bark" (func $bark))
-    (export "growl" (func $growl))
-    (export "howl" (func $howl))
     (export "woof" (func $woof))
 )
